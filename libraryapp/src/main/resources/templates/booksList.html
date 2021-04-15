@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="http://bitech.lk/libraryapp/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-menu">
+    <div class="top-section">
+        <a href="#" class="menu-item">
+            <i class="lni lni-layers"></i>
+        </a>
+    </div>
+    <div class="mid-section">
+        <a href="#" class="menu-item">
+            <div class="btn-icon">
+                <i class="lni lni-home"></i>
+            </div>
+        </a>
+        <a href="#" class="menu-item" onclick="openModal()">
+            <div class="btn-icon">
+                <i class="lni lni-circle-plus"></i>
+            </div>
+        </a>
+        <a href="#" class="menu-item">
+            <div class="btn-icon">
+                <i class="lni lni-control-panel"></i>
+            </div>
+        </a>
+    </div>
+    <div class="bottom-section">
+        <a href="#" class="menu-item">
+            <div class="btn-icon">
+                <i class="lni lni-exit"></i>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="content">
+    <div class="navbar">
+        <div class="left">
+            <div class="search-panel">
+                <input type="text" name="" placeholder="Search...">
+                <i class="lni lni-search-alt"></i>
+            </div>
+        </div>
+        <div class="right">
+            <span>Smith</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="top-section">
+            <h1 class="times-font">All books</h1>
+            <div class="top-section-inner">
+                <a href="#" th:each="bookList: ${allBooks}">
+                    <div class="book-card2" style="background-image: url('https://source.unsplash.com/user/erondu/1600x900')">
+                        <div class="title2 times-font">
+                            <p th:text="${bookList.title}"></p>
+                            <p th:text="${bookList.author}"></p>
+                            <div class="published2" th:text="${bookList.isbn}"></div>
+                            <a href="#" th:href="${'/delete/' + bookList.id}"><small>Delete</small></a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="top">
+        <p>Add book</p>
+        <div class="closebtn" onclick="closeModal()">
+            <i class="lni lni-close"></i>
+        </div>
+    </div>
+    <div class="bottom">
+        <form action="/add" method="post">
+            <div class="form-inner">
+                <div class="input-group">
+                    <label>Book Title</label>
+                    <input type="text" name="title" placeholder="Jurassic World">
+                    <input type="hidden" name="id" id="displayRandom">
+                </div>
+                <div class="input-group">
+                    <label>Author Name</label>
+                    <input type="text" name="author" placeholder="John Michael Crichton">
+                </div>
+                <div class="input-group">
+                    <label>ISBN Number</label>
+                    <input type="text" name="isbn" placeholder="978-3-16-148410-0">
+                </div>
+            </div>
+            <button type="submit" name="submit-button" class="submit-button">
+                <i class="lni lni-save"></i>
+                Add book
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+		var addModal = document.querySelector(".modal");
+		addModal.style.display="none";
+
+		function openModal(){
+			var addModal = document.querySelector(".modal");
+			addModal.style.display="block";
+		}
+
+		function closeModal(){
+			var addModal = document.querySelector(".modal");
+			addModal.style.display="none";
+		}
+	</script>
+</body>
+</html>
