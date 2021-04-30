@@ -33,30 +33,12 @@ public class BookListController {
         return "redirect:/";
     }
 
-//    @GetMapping("/delete/{id}")
-//    @ResponseBody
-//    public String getId(@RequestParam int id) {
-////        bookListRepository.removeIf()
-////        return "ID: " + id;
-//
-////        int id2=Integer.parseInt(id);
-//
-//        bookListRepository.deleteById(id);
-//
-//        return "redirect:/";
-//    }
-
-//    @DeleteMapping(value = "/delete/{id}")
-//    @DeleteMapping("/delete/{id}")
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
-    public String deleteBook(@PathVariable int id){
-        bookListRepository.deleteAll();
-//        db.BookListModel.remove({"id" :  {id})
-//        db.users.remove({"email" :  { id : id}});
-//        System.out.println(id);
-//        db.collection("bookListModel").deleteOne({_id:ObjectId(id)});
-//        db.bookListRepository.deleteOne( {"_id": ObjectId(id)});
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    public String getId(@RequestParam int id) {
+        System.out.println(id);
         return "redirect:/";
     }
+
 
 }
